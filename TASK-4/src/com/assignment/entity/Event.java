@@ -9,7 +9,7 @@ public class Event {
     private String venue_name;
     private int total_seats;
     private int  available_seats;
-    private double ticket_price;
+    private static double ticket_price;
     private String event_type;
 
 
@@ -68,12 +68,12 @@ public class Event {
         this.event_type = event_type;
     }
 
-    public double getTicket_price() {
+    public static double getTicket_price() {
         return ticket_price;
     }
 
     public void setTicket_price(double ticket_price) {
-        this.ticket_price = ticket_price;
+        Event.ticket_price = ticket_price;
     }
 
     public int getTotal_seats() {
