@@ -1,3 +1,6 @@
+package com.assignment.client;
+import static com.assignment.entity.TicketCost.costOfTickets;
+import static com.assignment.entity.TicketCheck.ticketCheck;
 import java.util.Scanner;
 
 public class TicketApp {
@@ -38,39 +41,6 @@ public class TicketApp {
 
     }
 
-    public static double costOfTickets(String Class,int noOfTickets){
 
-
-
-        switch(Class){
-            case "Silver":
-                price=200;
-                totalPrice=price*noOfTickets;
-                return totalPrice;
-            case "Gold":
-                price=300;
-                totalPrice=price*noOfTickets;
-                return totalPrice;
-            case "Diamond":
-                price=500;
-                totalPrice=price*noOfTickets;
-                return totalPrice;
-
-            default:
-                System.out.println("PLEASE! Enter the Correct Class");
-                return 0;
-
-
-        }
-
-    }
-    public static boolean ticketCheck(int availableTicket,int noOfBookingTicket){
-        if(noOfBookingTicket>availableTicket){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
 
 }

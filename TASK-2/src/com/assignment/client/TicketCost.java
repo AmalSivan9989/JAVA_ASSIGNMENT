@@ -1,9 +1,12 @@
-import java.sql.SQLOutput;
+package com.assignment.client;
+import com.assignment.entity.TicketCheck;
 import java.util.Scanner;
 
+import static com.assignment.entity.TicketCheck.ticketCheck;
+import static com.assignment.entity.TicketCost.costOfTickets;
+
 public class TicketCost {
-    private static double price;
-    static double totalPrice;
+
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         System.out.print("Enter the preferred Class:");
@@ -30,38 +33,6 @@ public class TicketCost {
 
     }
 
-    public static double costOfTickets(String Class,int noOfTickets){
 
 
-
-       switch(Class){
-           case "Silver":
-               price=200;
-               totalPrice=price*noOfTickets;
-               return totalPrice;
-           case "Gold":
-               price=300;
-               totalPrice=price*noOfTickets;
-               return totalPrice;
-           case "Diamond":
-               price=500;
-               totalPrice=price*noOfTickets;
-               return totalPrice;
-
-           default:
-               System.out.println("PLEASE! Enter the Correct Class");
-               return 0;
-
-
-       }
-
-    }
-    public static boolean ticketCheck(int availableTicket,int noOfBookingTicket){
-        if(noOfBookingTicket>availableTicket){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
 }

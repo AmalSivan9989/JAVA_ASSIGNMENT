@@ -1,5 +1,10 @@
+package co.assignment.client;
+
 import java.util.*;
-public class TicketAvailability {
+
+import static co.assignment.entity.TicketAvailability.ticketCheck;
+
+public class TicketAvailabilityClient {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         System.out.print("Enter the total Available Tickets:");
@@ -18,12 +23,5 @@ public class TicketAvailability {
 
 
     }
-    public static boolean ticketCheck(int availableTicket,int noOfBookingTicket){
-        if(noOfBookingTicket>availableTicket){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
+
 }
