@@ -40,6 +40,6 @@ public class Movie extends Event{
 
     @Override
     public void displayEventDetails() {
-        System.out.println("Movie Event: " + eventName + " featuring " + actorName + " and " + actressName + " (Genre: " + genre + ") at " + venueName + " on " + eventDate + " " + eventTime);
+        System.out.println("Movie Event: " + eventName + " featuring " + ActorName + " and " + ActresName + " (Genre: " + genre + ") at " + venueName + " on " + eventDate + " " + eventTime);
     }
 }
