@@ -1,5 +1,7 @@
 package com.hexaware.client;
 
+import com.hexaware.dao.BookingSystemServiceProviderImpl;
+import com.hexaware.dao.EventServiceProviderImpl;
 import com.hexaware.entity.*;
 import com.hexaware.exception.EventNotFoundException;
 import com.hexaware.exception.InvalidBookingIDException;
@@ -12,20 +14,21 @@ public class TicketBookingSystem {
 
         EventServiceProviderImpl eventService = new EventServiceProviderImpl();
         BookingSystemServiceProviderImpl bookingService = new BookingSystemServiceProviderImpl(eventService);
+
         while (true) {
             System.out.println("\nAvailable Commands:");
-            System.out.println("1. create_event");
-            System.out.println("2. book_tickets");
-            System.out.println("3. cancel_tickets");
-            System.out.println("4. get_event_details");
-            System.out.println("5. get_available_seats");
-            System.out.println("6. exit");
-            System.out.print("Enter command: ");
+            System.out.println("1. Create Event");
+            System.out.println("2. Book Tickets");
+            System.out.println("3. Cancel Booking");
+            System.out.println("4. Get Event Details");
+            System.out.println("5. Get Available Seats");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice (1-6): ");
 
-            String command = scanner.nextLine().trim().toLowerCase();
+            int choice = Integer.parseInt(scanner.nextLine().trim());
 
-            switch (command) {
-                case "create_event":
+            switch (choice) {
+                case 1:
                     System.out.print("Enter event name: ");
                     String eventName = scanner.nextLine();
                     System.out.print("Enter venue name: ");
@@ -46,7 +49,7 @@ public class TicketBookingSystem {
                     System.out.println("Event created successfully: " + event.getEventName());
                     break;
 
-                case "book_tickets":
+                case 2:
                     System.out.print("Enter event name to book tickets: ");
                     String bookEventName = scanner.nextLine();
                     System.out.print("Enter number of tickets: ");
@@ -71,7 +74,7 @@ public class TicketBookingSystem {
                     }
                     break;
 
-                case "cancel_tickets":
+                case 3:
                     System.out.print("Enter booking ID to cancel: ");
                     int bookingId = Integer.parseInt(scanner.nextLine());
 
@@ -82,7 +85,7 @@ public class TicketBookingSystem {
                     }
                     break;
 
-                case "get_event_details":
+                case 4:
                     Map<String, Event> eventMap = eventService.getEventDetails();
                     if (eventMap.isEmpty()) {
                         System.out.println("No events available.");
@@ -93,17 +96,17 @@ public class TicketBookingSystem {
                     }
                     break;
 
-                case "get_available_seats":
+                case 5:
                     System.out.println("Total available tickets: " + eventService.getAvailableNoOfTickets());
                     break;
 
-                case "exit":
+                case 6:
                     System.out.println("Exiting the system.");
                     scanner.close();
                     return;
 
                 default:
-                    System.out.println("Invalid command. Please try again.");
+                    System.out.println("Invalid choice. Please try again.");
             }
         }
     }

@@ -1,6 +1,8 @@
-package com.hexaware.bean;
+package com.hexaware.service;
 
-import com.hexaware.service.IBookingSystemServiceProvider;
+import com.hexaware.bean.Booking;
+import com.hexaware.bean.Customer;
+import com.hexaware.bean.Event;
 
 import java.util.ArrayList;
 import java.util.List;

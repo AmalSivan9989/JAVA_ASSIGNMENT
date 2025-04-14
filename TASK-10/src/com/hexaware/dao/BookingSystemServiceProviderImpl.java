@@ -1,18 +1,20 @@
-package com.hexaware.entity;
+package com.hexaware.dao;
 
-import com.hexaware.dao.IBookingSystemServiceProvider;
+import com.hexaware.entity.Booking;
+import com.hexaware.entity.Customer;
+import com.hexaware.entity.Event;
 import com.hexaware.exception.EventNotFoundException;
 import com.hexaware.exception.InvalidBookingIDException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public  class BookingSystemServiceProviderImpl extends EventServiceProviderImpl implements IBookingSystemServiceProvider {
-    private List<Booking> bookings;
+public class BookingSystemServiceProviderImpl extends EventServiceProviderImpl implements IBookingSystemServiceProvider {
+    private Set<Booking> bookings;
     private int bookingCounter;
 
     public BookingSystemServiceProviderImpl() {
-        this.bookings = new ArrayList<>();
+        this.bookings = new HashSet<>();
         this.bookingCounter = 1;
     }
 
@@ -22,7 +24,7 @@ public  class BookingSystemServiceProviderImpl extends EventServiceProviderImpl 
     }
 
     @Override
-    public Booking bookTickets(String eventName, int numTickets, List<Customer> customers) throws EventNotFoundException {
+    public Booking bookTickets(String eventName, int numTickets, Set<Customer> customers) throws EventNotFoundException {
         Event event = findEventByName(eventName);
         if (event == null) {
             throw new EventNotFoundException("Error: Event '" + eventName + "' not found.");
@@ -33,12 +35,9 @@ public  class BookingSystemServiceProviderImpl extends EventServiceProviderImpl 
             return null;
         }
 
-
         event.setAvailableSeats(event.getAvailableSeats() - numTickets);
 
-
         double totalCost = calculateBookingCost(numTickets, event.getTicketPrice());
-
 
         Booking newBooking = new Booking(bookingCounter++, event, numTickets, totalCost, customers);
         bookings.add(newBooking);
@@ -50,7 +49,6 @@ public  class BookingSystemServiceProviderImpl extends EventServiceProviderImpl 
     public boolean cancelBooking(int bookingId) throws InvalidBookingIDException {
         for (Booking booking : bookings) {
             if (booking.getBookingId() == bookingId) {
-                // Restore seats
                 booking.getEvent().setAvailableSeats(booking.getEvent().getAvailableSeats() + booking.getNumTickets());
                 bookings.remove(booking);
                 return true;
@@ -76,14 +74,5 @@ public  class BookingSystemServiceProviderImpl extends EventServiceProviderImpl 
             }
         }
         return null;
-    }
-
-    @Override
-    public int getAvailableSeats(String eventName) throws EventNotFoundException {
-        Event event = findEventByName(eventName);
-        if (event == null) {
-            throw new EventNotFoundException("Error: Event '" + eventName + "' not found.");
-        }
-        return event.getAvailableSeats();
     }
 }

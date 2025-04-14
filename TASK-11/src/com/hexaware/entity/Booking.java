@@ -1,5 +1,6 @@
 package com.hexaware.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ public class Booking {
     private List<Customer> customers;
     private String eventName;
     private int numberOfTickets;
+    private LocalDate bookingDate;
 
     public Booking(Event event, Customer customer, int numTickets, double totalCost) {
         this.event = event;
@@ -30,7 +32,13 @@ public class Booking {
 
     public Booking() {
     }
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
 
+    public LocalDate getBookingDate() {
+        return bookingDate;
+    }
     public Customer getCustomer() {
         return customer;
     }

@@ -1,6 +1,7 @@
-package com.hexaware.entity;
+package com.hexaware.dao;
 
-import com.hexaware.dao.IEventServiceProvider;
+import com.hexaware.entity.Event;
+import com.hexaware.entity.Venue;
 
 import java.util.ArrayList;
 import java.util.List;

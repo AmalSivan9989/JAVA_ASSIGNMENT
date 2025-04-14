@@ -1,8 +1,9 @@
 package com.hexaware.client;
 
+import com.hexaware.dao.BookingSystemServiceProviderImpl;
+import com.hexaware.dao.EventServiceProviderImpl;
 import com.hexaware.entity.*;
 import com.hexaware.exception.EventNotFoundException;
-import com.hexaware.exception.InvalidBookingIDException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class TicketBookingSystem {
                         System.out.print("Enter number of tickets: ");
                         int numTickets = Integer.parseInt(scanner.nextLine());
 
-                        // Creating dummy customers for simplicity
+
                         List<Customer> customers = new ArrayList<>();
                         for (int i = 0; i < numTickets; i++) {
                             customers.add(new Customer("Customer" + (i + 1), "customer" + (i + 1) + "@mail.com"));

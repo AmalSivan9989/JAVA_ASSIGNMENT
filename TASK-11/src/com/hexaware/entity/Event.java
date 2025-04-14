@@ -17,13 +17,22 @@ public class Event {
         this.eventDate = eventDate;
         this.eventTime = eventTime;
         this.totalSeats = totalSeats;
-        Event.ticketPrice = ticketPrice;
+        this.ticketPrice = ticketPrice;
         this.eventType = eventType;
         this.venue = venue;
 
     }
 
     public Event() {
+    }
+
+    public Event(int eventId, String eventName, int totalSeats, int availableSeats, double ticketPrice, String eventType) {
+        this.eventId = eventId;
+        this.eventName = eventName;
+        this.totalSeats = totalSeats;
+        this.ticketPrice = ticketPrice;
+        this.eventType = eventType;
+        this.venue = null;
     }
 
     public Booking getBooking() {

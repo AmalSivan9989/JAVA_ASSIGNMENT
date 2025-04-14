@@ -1,22 +1,27 @@
-package com.hexaware.bean;
+package com.hexaware.dao;
 
-import com.hexaware.service.IEventServiceProvider;
+import com.hexaware.entity.Event;
+import com.hexaware.entity.Venue;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class EventServiceProviderImpl implements IEventServiceProvider {
-    private List<Event> events = new ArrayList<>();
+    private Set<Event> events = new HashSet<>();
+
+    public EventServiceProviderImpl() {
+        this.events = new TreeSet<>(Comparator.comparing(Event::getEventName)
+                .thenComparing(e -> e.getVenue().getLocation()));
+    }
 
     @Override
     public Event createEvent(String eventName, String date, String time, int totalSeats, double ticketPrice, String eventType, Venue venue) {
-        Event event = new Event(eventName, date, time, venue, totalSeats, ticketPrice, eventType);
+        Event event = new Event(eventName, date, time, venue, totalSeats, totalSeats, ticketPrice, eventType);
         events.add(event);
         return event;
     }
 
     @Override
-    public List<Event> getEventDetails() {
+    public Set<Event> getEventDetails() {
         return events;
     }
 

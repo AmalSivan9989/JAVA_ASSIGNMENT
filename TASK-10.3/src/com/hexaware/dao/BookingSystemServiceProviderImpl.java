@@ -1,7 +1,8 @@
-package com.hexaware.entity;
+package com.hexaware.dao;
 
-import com.hexaware.dao.IBookingSystemServiceProvider;
-import com.hexaware.dao.IEventServiceProvider;
+import com.hexaware.entity.Booking;
+import com.hexaware.entity.Customer;
+import com.hexaware.entity.Venue;
 import com.hexaware.exception.EventNotFoundException;
 import com.hexaware.exception.InvalidBookingIDException;
 
